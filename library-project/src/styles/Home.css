@@ -42,3 +42,9 @@
   .categories-list li a:hover {
     text-decoration: underline;
   }
+
+  .book-cards {
+    display: flex;
+    flex-wrap: wrap; /* Pour permettre aux cartes de passer à la ligne si l'espace est insuffisant */
+    justify-content: space-between; /* Pour répartir les cartes de manière égale sur la ligne */
+  }

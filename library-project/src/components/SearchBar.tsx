@@ -1,1 +1,0 @@
-//Composant de barre de recherche rapide
