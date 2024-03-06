@@ -78,7 +78,7 @@ npm test
 ```
 
 ## Contributing
-- Fork the repository or .
+- Fork the repository.
 - Create a new branch for your feature (`git checkout -b feature/your-feature-name`).
 - Commit your changes (`git commit -am 'Add new feature'`).
 - Push to the branch (`git push origin feature/your-feature-name`).
