@@ -22,7 +22,7 @@ const BookCard: React.FC<BookCardProps> = ({ bookInfo }) => {
       <h3>{bookInfo.title}</h3>
       <p>by {bookInfo.author}</p>
       <p>{bookInfo.description}</p>
-      <Link to={`/book/${bookInfo.id}`} className="cta-button">View Details</Link>
+      <Link to={bookInfo.id} className="cta-button">View Details</Link>
     </div>
   );
 }

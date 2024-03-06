@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/quick-search" element={<QuickSearchPage />} />
-          <Route path="/book/:id" element={<BookPage />} />
+          <Route path="/works/:id" element={<BookPage />} />
         </Routes>
       </div>
       <Footer />

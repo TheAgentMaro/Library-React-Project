@@ -1,39 +1,43 @@
 .book-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .book-details {
-    display: flex;
-  }
-  
-  .book-cover {
-    width: 200px;
-    height: auto;
-    margin-right: 20px;
-  }
-  
-  .book-info {
-    flex-grow: 1;
-  }
-  
-  .book-info h2 {
-    margin-top: 0;
-  }
-  
-  .book-info p {
-    margin: 10px 0;
-  }
-  
-  .book-info a {
-    display: block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .book-info a:hover {
-    text-decoration: underline;
-  }
-  
+  width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.book-details {
+  height: auto;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+.book-cover {
+  width: 250px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.book-info h2 {
+  margin-top: 0;
+}
+
+.book-info p {
+  margin: 10px 0;
+}
+
+.book-info a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.book-info a:hover {
+  text-decoration: underline;
+}

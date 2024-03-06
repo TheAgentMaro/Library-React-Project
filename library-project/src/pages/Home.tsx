@@ -49,8 +49,8 @@ const Home: React.FC = () => {
       <p>You can also browse our popular categories:</p>
       <ul className="categories-list">
         <li><Link to="/quick-search?q=science">Science</Link></li>
-        <li><Link to="/quick-search?q=science">Fiction</Link></li>
-        <li><Link to="/quick-search?q=science">Mystery</Link></li>
+        <li><Link to="/quick-search?q=fiction">Fiction</Link></li>
+        <li><Link to="/quick-search?q=mystery">Mystery</Link></li>
       </ul>
 
       <div className="book-cards">
