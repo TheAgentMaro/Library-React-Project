@@ -11,11 +11,26 @@ interface Book {
   description: string;
 }
 
+interface RecentChange {
+  id: string;
+  kind: string;
+  timestamp: string;
+  comment: string;
+  data: {
+    master: string;
+    duplicates?: string[];
+  };
+}
+
+
 const Home: React.FC = () => {
   const [books, setBooks] = useState<Book[]>([]);
+  const [recentChanges, setRecentChanges] = useState<RecentChange[]>([]);
+
 
   useEffect(() => {
     fetchBooksData();
+    fetchRecentChanges();
   }, []);
 
   const fetchBooksData = async () => {
@@ -38,6 +53,20 @@ const Home: React.FC = () => {
       console.error('Error fetching data:', error);
     }
   };
+
+  const fetchRecentChanges = async () => {
+    try {
+      const response = await fetch('http://openlibrary.org/recentchanges.json?limit=5');
+      if (!response.ok) {
+        throw new Error('Failed to fetch recent changes');
+      }
+      const data = await response.json();
+      setRecentChanges(data);
+    } catch (error) {
+      console.error('Error fetching recent changes:', error);
+    }
+  };
+
   return (
     <div className="home-container">
       <h1>Welcome to the SupWorld Library</h1>
@@ -53,6 +82,7 @@ const Home: React.FC = () => {
         <li><Link to="/quick-search?q=mystery">Mystery</Link></li>
       </ul>
 
+      <h2>Books</h2>
       <div className="book-cards">
         {books.map((book: Book) => (
           <BookCard
@@ -67,7 +97,20 @@ const Home: React.FC = () => {
           />
         ))}
       </div>
-    </div>
+
+      <div className="recent-changes">
+        <h2>Recent Changes on the Website</h2>
+        <ul>
+          {recentChanges.map(change => (
+            <li key={change.id} className="change-item">
+              <div className="change-kind">{change.kind}</div>
+              <div className="change-timestamp">{change.timestamp}</div>
+              <div className="change-comment">{change.comment}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      </div>
   );
 }
 

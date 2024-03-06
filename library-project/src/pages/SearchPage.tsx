@@ -23,15 +23,19 @@ const SearchPage: React.FC = () => {
   const handleSearch = async () => {
     try {
       let queryString = `https://openlibrary.org/search.json?q=`;
-      if (title) queryString += `+${title}`;
-      if (author) queryString += `+${author}`;
-      if (isbn) queryString += `+isbn:${isbn}`;
-      if (subject) queryString += `+subject:${subject}`;
-      if (place) queryString += `+place:${place}`;
-      if (person) queryString += `+person:${person}`;
-      if (publisher) queryString += `+publisher:${publisher}`;
-
-      queryString = encodeURI(queryString.slice(0, -1));
+  
+      if (title) queryString += `title:${title} `;
+      if (author) queryString += `author:${author} `;
+      if (isbn) queryString += `isbn:${isbn} `;
+      if (subject) queryString += `subject:${subject} `;
+      if (place) queryString += `place:${place} `;
+      if (person) queryString += `person:${person} `;
+      if (publisher) queryString += `publisher:${publisher} `;
+  
+      queryString = queryString.trim();
+  
+      // Encode the query string
+      queryString = encodeURI(queryString);
   
       const response = await fetch(queryString);
       if (!response.ok) {

@@ -11,7 +11,6 @@ const QuickSearchBar: React.FC = () => {
       try {
         // Encode the search query
         const encodedQuery = encodeURIComponent(searchQuery);
-        // Navigate to the quick search page with the encoded query as a parameter
         navigate(`/quick-search?q=${encodedQuery}`);
       } catch (error) {
         console.error('Error searching:', error);

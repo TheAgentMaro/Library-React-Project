@@ -29,7 +29,6 @@ const BookPage: React.FC = () => {
         throw new Error('Failed to fetch book data');
       }
       const data = await response.json();
-  
       const title = data.title || 'Unknown Title';
       const authors = data.authors ? data.authors.map((author: any) => author.author.key.replace('/authors/', '')) : ['Unknown Author'];
       const authorNames = authors.map((authorKey: string) => authorKey);

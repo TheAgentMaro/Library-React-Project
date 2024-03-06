@@ -48,3 +48,27 @@
     flex-wrap: wrap;
     justify-content: space-between; 
   }
+
+  /*------------------ Recent changes Container -----------*/
+  .recent-changes {
+    margin-top: 20px;
+  }
+  
+  .change-item {
+    background-color: #352828;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .change-kind {
+    font-weight: bold;
+  }
+  
+  .change-timestamp {
+    color: #666;
+  }
+  
+  .change-comment {
+    margin-top: 5px;
+  }
