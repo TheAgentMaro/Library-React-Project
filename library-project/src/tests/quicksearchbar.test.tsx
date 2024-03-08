@@ -26,7 +26,6 @@ test('renders QuickSearchBar component', () => {
 
 test('handles search correctly', () => {
   const mockNavigate = jest.fn();
-  // Set the mockNavigate function to be returned by useNavigate hook
   (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
 
   const { getByPlaceholderText, getByText } = render(
