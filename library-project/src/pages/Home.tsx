@@ -16,6 +16,9 @@ interface RecentChange {
   kind: string;
   timestamp: string;
   comment: string;
+  author: {
+    key: string;
+  };  
   data: {
     master: string;
     duplicates?: string[];
@@ -100,18 +103,29 @@ const Home: React.FC = () => {
 
       <div className="recent-changes">
         <h2>Recent Changes on the Website</h2>
-        <ul>
-          {recentChanges.map(change => (
-            <li key={change.id} className="change-item">
-              <div className="change-kind">{change.kind}</div>
-              <div className="change-timestamp">{change.timestamp}</div>
-              <div className="change-comment">{change.comment}</div>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Kind</th>
+              <th>Timestamp</th>
+              <th>Comment</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recentChanges.map(change => (
+              <tr key={change.id} className="change-item">
+                <td>{change.kind}</td>
+                <td>{change.timestamp}</td>
+                <td>{change.comment}</td>
+                <td>{change.author.key}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      </div>
-  );
+    </div>
+);
 }
 
 export default Home;

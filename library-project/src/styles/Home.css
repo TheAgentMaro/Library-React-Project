@@ -54,11 +54,23 @@
     margin-top: 20px;
   }
   
-  .change-item {
-    background-color: #352828;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #3c3737;
+  }
+  
+  .change-item:nth-child(even) {
+    background-color: #3c3737;
   }
   
   .change-kind {
