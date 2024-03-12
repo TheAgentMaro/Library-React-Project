@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Home.css';
+import '../styles/GeneralStyles.css'
 import BookCard from '../components/BookCard';
 
 interface Book {

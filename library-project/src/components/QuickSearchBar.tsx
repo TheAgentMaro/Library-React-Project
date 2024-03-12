@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/QuickSearchBar.css';
+import '../styles/GeneralStyles.css'
 
 const QuickSearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');

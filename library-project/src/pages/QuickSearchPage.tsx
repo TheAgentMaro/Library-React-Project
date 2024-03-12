@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
-import '../styles/SearchPage.css';
+import '../styles/GeneralStyles.css'
 
 interface Book {
   key: string;

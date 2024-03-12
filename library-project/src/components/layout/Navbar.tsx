@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import '../../styles/Layout.css';
+import '../../styles/GeneralStyles.css';
 import logo from '../../assets/icon.png';
 
 const Navbar: React.FC = () => {

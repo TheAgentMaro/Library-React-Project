@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BookCard from '../components/BookCard';
-import '../styles/SearchPage.css';
+import '../styles/GeneralStyles.css'
 
 interface Book {
   key: string;

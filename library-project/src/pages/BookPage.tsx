@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../styles/BookPage.css';
+import '../styles/GeneralStyles.css'
 
 interface BookData {
   title: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/BookCard.css'
+import '../styles/GeneralStyles.css'
 
 type BookInfo = {
   id: string;
