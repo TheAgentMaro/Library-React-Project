@@ -17,7 +17,7 @@ test('renders QuickSearchBar component', () => {
     </BrowserRouter>
   );
 
-  const inputElement = getByPlaceholderText('Searching...');
+  const inputElement = getByPlaceholderText('Search for books, authors, categories and more..');
   expect(inputElement).toBeInTheDocument();
 
   const searchButton = getByText('Search');
@@ -34,7 +34,7 @@ test('handles search correctly', () => {
     </BrowserRouter>
   );
 
-  const inputElement = getByPlaceholderText('Searching...');
+  const inputElement = getByPlaceholderText('Search for books, authors, categories and more..');
   const searchButton = getByText('Search');
 
   fireEvent.change(inputElement, { target: { value: 'Test query' } });

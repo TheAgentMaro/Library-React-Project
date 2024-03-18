@@ -103,29 +103,31 @@ const Home: React.FC = () => {
 
       <div className="recent-changes">
         <h2>Recent Changes on the Website</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Kind</th>
-              <th>Timestamp</th>
-              <th>Comment</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            {recentChanges.map(change => (
-              <tr key={change.id} className="change-item">
-                <td>{change.kind}</td>
-                <td>{change.timestamp}</td>
-                <td>{change.comment}</td>
-                <td>{change.author.key}</td>
+        <div className="table-responsive">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Kind</th>
+                <th>Timestamp</th>
+                <th>Comment</th>
+                <th>Author</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {recentChanges.map((change) => (
+                <tr key={change.id} className="change-item">
+                  <td>{change.kind}</td>
+                  <td>{change.timestamp}</td>
+                  <td>{change.comment}</td>
+                  <td>{change.author.key}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-);
+  );
 }
 
 export default Home;

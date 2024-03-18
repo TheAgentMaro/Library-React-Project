@@ -22,9 +22,10 @@ const QuickSearchBar: React.FC = () => {
     <div className="quick-search-bar">
       <input
         type="text"
-        placeholder="Searching..."
+        placeholder="Search for books, authors, categories and more.."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        style={{ color: 'white !important' }}
       />
       <button onClick={handleSearch}>Search</button>
     </div>

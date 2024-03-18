@@ -6,7 +6,6 @@ import BookPage from './pages/BookPage';
 import QuickSearchPage from './pages/QuickSearchPage';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import QuickSearchBar from './components/QuickSearchBar';
 import './App.css'
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
     <Router>
       <div className="App">
       <Navbar />
-      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />

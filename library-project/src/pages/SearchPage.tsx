@@ -58,42 +58,49 @@ const SearchPage: React.FC = () => {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="ISBN"
           value={isbn}
           onChange={(e) => setIsbn(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="Subject"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="Place"
           value={place}
           onChange={(e) => setPlace(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="Person"
           value={person}
           onChange={(e) => setPerson(e.target.value)}
+          style={{ color: 'white !important' }}
         />
         <input
           type="text"
           placeholder="Publisher"
           value={publisher}
           onChange={(e) => setPublisher(e.target.value)}
+          style={{ color: 'white !important' }}
         />
           <button onClick={handleSearch}>Search</button>
         </div>

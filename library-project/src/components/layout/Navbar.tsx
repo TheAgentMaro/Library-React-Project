@@ -8,23 +8,27 @@ import logo from '../../assets/icon.png';
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav>
       <Link to="/" className="logo">
         <img src={logo} alt="Logo" />
       </Link>
-      <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className={`menu ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
       </div>
       <QuickSearchBar />
-      <ul className={menuOpen ? 'open' : ''}>
+      <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/search">Advanced Search</NavLink>
+          <NavLink to="/search" onClick={toggleMenu}>Advanced Search</NavLink>
         </li>
       </ul>
     </nav>
