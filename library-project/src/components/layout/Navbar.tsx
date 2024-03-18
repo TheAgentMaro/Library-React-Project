@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import QuickSearchBar from '../QuickSearchBar';
 
 import '../../styles/GeneralStyles.css';
 import logo from '../../assets/icon.png';
@@ -17,6 +18,7 @@ const Navbar: React.FC = () => {
         <span></span>
         <span></span>
       </div>
+      <QuickSearchBar />
       <ul className={menuOpen ? 'open' : ''}>
         <li>
           <NavLink to="/">Home</NavLink>

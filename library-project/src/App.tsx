@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
       <Navbar />
-      <QuickSearchBar />
+      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
