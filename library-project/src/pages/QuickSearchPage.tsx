@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
-import '../styles/GeneralStyles.css'
+import '../styles/GeneralStyles.css';
 
 interface Book {
   key: string;
@@ -15,6 +15,8 @@ const QuickSearchPage: React.FC = () => {
   const location = useLocation();
   const [searchResults, setSearchResults] = useState<Book[]>([]);
   const [queryParams, setQueryParams] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [noResults, setNoResults] = useState<boolean>(false);
 
   useEffect(() => {
     const query = new URLSearchParams(location.search).get('q');
@@ -25,6 +27,8 @@ const QuickSearchPage: React.FC = () => {
   }, [location]);
 
   const handleSearch = async (query: string) => {
+    setLoading(true);
+    setNoResults(false); // Reset noResults flag
     try {
       const queryString = `https://openlibrary.org/search.json?q=${query}`;
       const response = await fetch(queryString);
@@ -33,16 +37,23 @@ const QuickSearchPage: React.FC = () => {
       }
       const data = await response.json();
       setSearchResults(data.docs);
+      if (data.docs.length === 0) {
+        setNoResults(true);
+      }
     } catch (error) {
       console.error('Error searching:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="search-page">
       <h1>Quick Search Results for "{queryParams}"</h1>
-      <div className="search-results">
-        {searchResults.length > 0 ? (
+      {loading ? (
+        <p className="P-text">Loading...</p>
+      ) : searchResults.length > 0 ? (
+        <div className="search-results">
           <div className="book-cards">
             {searchResults.map((book: Book) => (
               <BookCard
@@ -57,10 +68,10 @@ const QuickSearchPage: React.FC = () => {
               />
             ))}
           </div>
-        ) : (
-          <p className="P-text">No results found.</p>
-        )}
-      </div>
+        </div>
+      ) : noResults ? (
+        <p className="P-text">No results found.</p>
+      ) : null}
     </div>
   );
 };
