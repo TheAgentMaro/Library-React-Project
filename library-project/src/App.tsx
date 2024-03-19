@@ -6,6 +6,7 @@ import BookPage from './pages/BookPage';
 import QuickSearchPage from './pages/QuickSearchPage';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import { BookDataProvider } from './context/BookDataContext';
 import './App.css'
 
 function App() {
@@ -14,12 +15,14 @@ function App() {
     <Router>
       <div className="App">
       <Navbar />
+      <BookDataProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/quick-search" element={<QuickSearchPage />} />
           <Route path="/works/:id" element={<BookPage />} />
         </Routes>
+        </BookDataProvider>
       </div>
       <Footer />
     </Router>
