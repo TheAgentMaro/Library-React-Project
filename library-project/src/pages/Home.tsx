@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/GeneralStyles.css'
 import BookCard from '../components/BookCard';
+import axios from 'axios';
 
 interface Book {
   key: string;
@@ -29,7 +30,8 @@ interface RecentChange {
 const Home: React.FC = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [recentChanges, setRecentChanges] = useState<RecentChange[]>([]);
-
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     fetchBooksData();
@@ -38,13 +40,8 @@ const Home: React.FC = () => {
 
   const fetchBooksData = async () => {
     try {
-      const response = await fetch('https://openlibrary.org/search.json?q=react');
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      const data = await response.json();
-      // Limiter le nombre de livres à afficher à 6
-      const limitedBooks = data.docs.slice(0, 6).map((book: Book) => ({
+      const response = await axios.get('https://openlibrary.org/search.json?q=react');
+      const limitedBooks = response.data.docs.slice(0, 6).map((book: Book) => ({
         key: book.key,
         title: book.title,
         author_name: book.author_name,
@@ -52,27 +49,29 @@ const Home: React.FC = () => {
         description: book.description ? book.description.toString : 'No description available',
       }));
       setBooks(limitedBooks);
+      setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      setError('Error fetching data');
+      setLoading(false);
     }
   };
 
   const fetchRecentChanges = async () => {
     try {
-      const response = await fetch('http://openlibrary.org/recentchanges.json?limit=5');
-      if (!response.ok) {
-        throw new Error('Failed to fetch recent changes');
-      }
-      const data = await response.json();
-      setRecentChanges(data);
+      const response = await axios.get('http://openlibrary.org/recentchanges.json?limit=5');
+      setRecentChanges(response.data);
     } catch (error) {
-      console.error('Error fetching recent changes:', error);
+      setError('Error fetching recent changes');
     }
   };
 
   return (
     <div className="home-container">
       <h1>Welcome to the SupWorld Library</h1>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {!loading && !error && (
+        <>
       <p>Discover our extensive collection of exciting books.</p>
       <div className="cta-buttons">
         <Link to="/search" className="cta-button">Advanced Search</Link>
@@ -126,6 +125,8 @@ const Home: React.FC = () => {
           </table>
         </div>
       </div>
+      </>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/GeneralStyles.css'
 
 interface BookData {
@@ -24,11 +25,8 @@ const BookPage: React.FC = () => {
 
   const fetchBookData = async (bookId: string) => {
     try {
-      const response = await fetch(`https://openlibrary.org/works/${bookId}.json`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch book data');
-      }
-      const data = await response.json();
+      const response = await axios.get(`https://openlibrary.org/works/${bookId}.json`);
+      const data = response.data;
       const title = data.title || 'Unknown Title';
       const authors = data.authors ? data.authors.map((author: any) => author.author.key.replace('/authors/', '')) : ['Unknown Author'];
       const authorNames = authors.map((authorKey: string) => authorKey);
@@ -87,7 +85,6 @@ const BookPage: React.FC = () => {
     }
   }, [bookData]);
 
-  console.log('Book Data:', bookData);
 
   return (
     <div className="book-page">
